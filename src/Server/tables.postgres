@@ -19,6 +19,7 @@ CREATE TABLE OAuth(
     REFERENCES users(email)
 )
 
+--create color table
 
 --local users
 INSERT INTO  Users (_id, username, fun_fact) VALUES (default, 'justspicee', 'i like takis')
