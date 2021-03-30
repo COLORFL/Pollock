@@ -5,12 +5,18 @@ const app = express();
 const PORT = 8000;
 
 app.use(express.json());
-app.use(express.static('assets'));
+app.use(express.urlencoded({ extended: true }));
+
+// app.use('/build', express.static(path.resolve(__dirname, '../../build')));
+app.use('/client', express.static(path.resolve(__dirname, '../Client')));
+// app.use(express.static('style'));
 
 app.get('/',(req, res) => {
-  res.setHeader('content-type', 'text/html');
+  res.setHeader('Content-type', 'text/html');
   res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 })
+
+
 
 app.listen(PORT, () =>
   console.log(`Listening on port ${PORT}`)
