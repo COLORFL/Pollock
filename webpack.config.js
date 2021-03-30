@@ -10,7 +10,7 @@ module.exports = {
     },
     devServer: {
         host: 'localhost',
-        port: 8000,
+        port: 4000,
         contentBase: path.join(__dirname, 'build'),
         publicPath: '/',  //front
         historyApiFallback: true,
@@ -20,7 +20,7 @@ module.exports = {
         },
         proxy: {
             '/': {
-                target: 'http://localhost:9000',
+                target: 'http://localhost:8000',
                 secure: false,
                 changeOrigin: true
             }            

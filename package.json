@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "react": "cd node_modules/react-scripts && node bin/react-scripts.js start",
-    "start": "cross-env NODE_ENV=production node server/server.js",
+    "start": "cross-env NODE_ENV=production nodemon src/server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=production concurrently \"nodemon server/server.js\" \"webpack serve --open --hot\""
+    "dev": "cross-env NODE_ENV=production concurrently \"nodemon src/server/server.js\" \"webpack serve --open --hot\""
   },
   "nodemonConfig": {
     "ignore": [
