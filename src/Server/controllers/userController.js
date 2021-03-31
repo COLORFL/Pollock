@@ -1,82 +1,87 @@
-const { NetworkCell } = require('@material-ui/icons')
-const db = require('../dbModel.js')
+const { NetworkCell } = require('@material-ui/icons');
+const db = require('../dbModel.js');
 
-const userController = {}
+const userController = {};
 
-//POST
-userController.createPalette = (req, res, next)=>{
- 
-    const {palette, email_fk} = req.body
+//CREATE
+userController.createPalette = (req, res, next) => {
+  const { palette, email_fk } = req.body;
 
-    const values = [ palette, email_fk]
+  const values = [palette, email_fk];
 
-    const str = `INSERT INTO colors (pallete, email_fk) VALUES ($1, $2) RETURNING palette` 
+  const str = `INSERT INTO colors (pallete, email_fk) VALUES ($1, $2) RETURNING palette`;
 
-    console.log(values)
-    
-    db.query(str, values)
-      .then(data=>{
-          res.locals.createPalette = data.rows
-          .next()
+  console.log(values);
 
-      })
-      .catch(err=>{
-          next({
-              log:'Error in userController.createPalette: failed to create palette',
-              status:400,
-              message:{err: 'Failed to create new palette'}
-          })
-      })
-  
-}
+  db.query(str, values)
+    .then((data) => {
+      res.locals.createPalette = data.rows.next();
+    })
+    .catch((err) => {
+      next({
+        log: 'Error in userController.createPalette: failed to create palette',
+        status: 400,
+        message: { err: 'Failed to create new palette' },
+      });
+    });
+};
 
-
-//GET 
+//READ
 userController.getPalette = (req, res, next) => {
-    const {email} = req.body;
-    const queryStr = `select * from Colors where email = $1;`
-    db.query (query, [username])
-    .then(data => {
-        res.locals.colors = data.rows[0];
-        return next();
+  const { email } = req.body;
+  const queryStr = `select * from Colors where email = $1;`;
+  db.query(query, [username])
+    .then((data) => {
+      res.locals.colors = data.rows[0];
+      return next();
     })
-    .catch(err =>{
-        next({
-            log:'Error in userController.getPalette: failed to get message',
-            status: 400,
-            message: {err: 'Failed to get palette'}
-        })
+    .catch((err) => {
+      next({
+        log: 'Error in userController.getPalette: failed to get message',
+        status: 400,
+        message: { err: 'Failed to get palette' },
+      });
+    });
+};
+//UPDATE
+userController.upatePalette = (req, res, next) => {
+  const { update, email } = req.body;
+  const updateStr = `UPDATE colors SET palette = $1 WHERE email_fk = $2;`;
+  db.query(updateStr, [update, email])
+    .then((data) => {
+      return next();
     })
-}
-
-
-
-
-
-
-//DELETE 
+    .catch((err) => {
+      next({
+        log: 'Error in userController.updatePalette: failed to delete message',
+        status: 304,
+        message: { err: 'Failed to update palette' },
+      });
+    });
+};
+//DELETE
 userController.deletePalette = (req, res, next) => {
-    const {email_fk} = req.params
-    
-    const values = [email_fk] 
+  const { email_fk } = req.params;
 
-    const deleteStr = `DELETE FROM colors WHERE email = $1`
+  const values = [email_fk];
 
-    console.log(email_fk)
-    
-    db.query(deleteStr, values)
-    .then(data =>{
-        res.locals.deleteStr = data.rows[0]
-        return next()
+  const deleteStr = `DELETE FROM colors WHERE email = $1`;
+
+  console.log(email_fk);
+
+  db.query(deleteStr, values)
+    .then((data) => {
+      res.locals.deleteStr = data.rows[0];
+      return next();
     })
-    .catch(err =>{
-        next({
-            log:'Error in userController.deletePalette: failed to delete message',
-            status: 400,
-            message: {err: 'Failed to delete palette'}
-        })
-    })
-    
-}
+    .catch((err) => {
+      next({
+        log: 'Error in userController.deletePalette: failed to delete message',
+        status: 400,
+        message: { err: 'Failed to delete palette' },
+      });
+    });
+};
 
-module.exports = userController
+//
+module.exports = userController;
