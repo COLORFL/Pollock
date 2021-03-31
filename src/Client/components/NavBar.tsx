@@ -7,21 +7,22 @@ const NavBar = () => {
   return (
     <div id="nav">
       <ul id='nav-ul'>
-        <Link to='/'>
-          <li>Dashboard</li>
+        <Link to='/' style={{ textDecoration: 'none', color:'white' }}>
+          <li >Dashboard</li>
+          
         </Link>
-        <Link to='/UserInfo'>
+        <Link to='/UserInfo' style={{ textDecoration: 'none', color:'white' }}>
           <li>Profile</li>
         </Link>
-        <Link to='/ColorPalette'>
-          <li>Saved Color Palette</li>
+        <Link to='/ColorPalette' style={{ textDecoration: 'none', color:'white' }}>
+          <li>Saved Color Palettes</li>
         </Link>
-        <Link to='/ColorPicker'>
+        <Link to='/ColorPicker' style={{ textDecoration: 'none', color:'white' }}>
           <li>Color Picker</li>
         </Link>
-        <Link to='/ChangePalette'>
+        {/* <Link to='/ChangePalette' style={{ textDecoration: 'none', color:'white' }}>
           <li>Change Palette Design</li>
-        </Link>
+        </Link> */}
       </ul>
     </div>
   );
