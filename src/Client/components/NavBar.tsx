@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <div id="nav">
       <ul id='nav-ul'>
-      <Link to='/'>
+        <Link to='/'>
           <li>Dashboard</li>
         </Link>
         <Link to='/UserInfo'>
