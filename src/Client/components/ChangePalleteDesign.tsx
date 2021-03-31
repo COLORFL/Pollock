@@ -4,7 +4,7 @@ import {StateContext} from "../provider/StateProvider";
 const ChangePalleteDesign = () => {
   return (
     <div>
-      <h1>ChangePalleteDesign</h1>
+      <h1>Change Pallete Design</h1>
     </div>
   );
 };
