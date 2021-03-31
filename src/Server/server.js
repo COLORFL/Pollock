@@ -25,30 +25,6 @@ app.get('/',(req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 })
 
-<<<<<<< HEAD
-app.get('/login',(req, res) => {
-  res.setHeader('Content-type', 'text/html');
-  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
-})
-
-
-app.use('/routes', router)
-
-
 app.listen(PORT, () =>
   console.log(`Listening on port ${PORT}`)
 );
-
-
-
-
-// global error handler
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json(err);
-});
-=======
-app.listen(PORT, () =>
-  console.log(`Listening on port ${PORT}`)
-);
->>>>>>> 81a344a8a3ed909fd12f7751ab395f7d2124004d

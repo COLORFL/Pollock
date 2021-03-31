@@ -49,11 +49,6 @@ userController.getPalette = (req, res, next) => {
     })
 }
 
-
-
-
-
-
 //DELETE 
 userController.deletePalette = (req, res, next) => {
     const {email_fk} = req.params
@@ -76,7 +71,6 @@ userController.deletePalette = (req, res, next) => {
             message: {err: 'Failed to delete palette'}
         })
     })
-    
 }
 
 module.exports = userController
