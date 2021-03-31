@@ -8,11 +8,45 @@
 </head>
 <body>
     <form>
-        <input id="email" type="email" placeholder= "Email Address"/>
-        <input id="name" type="text" placeholder= "Full Name"/>
-        <input id="password" type="password" placeholder= "Password"/>
-        <input id="fun_fact" type="text" placeholder= "Fun Fact"/>
-        <input type="submit" value="signup" />
+        <input id="email" type="email" placeholder="Email Address" />
+        <input id="firstName" type="text" placeholder="First Name" />
+        <input id="lastName" type="text" placeholder="Last Name" />
+        <input id="password" type="password" placeholder="Password" />
+        <input id="funFact" type="text" placeholder="Fun Fact"/>
+        <input id='signup' type="submit" value="signup" />
     </form>
+    <script>
+        const email = document.getElementById("email");
+        const name = document.getElementById("name");        
+        const password = document.getElementById("password");
+        const funFact = document.getElementById("funFact");
+        document.getElementById('signup').addEventListener('click', () => signup());
+        function signup(){
+            const inputFirstName = firstName.value;
+            const inputLastName = lastName.value;
+                const inputEmail = email.value;
+                const inputPassword = password.value;
+                const inputFunFact = funFact.value;
+                const userInfo = JSON.stringify({
+                    firstName : inputFirstName,
+                    lastName : inputLastName,
+                    email: inputEmail,
+                    password: inputPassword,
+                    funFact: inputFunFact
+                })
+                fetch('/auth/signup', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: userInfo
+                })
+                .then(response => response.json())
+                .then(result => {
+                console.log('this is', result);
+                })
+                .catch(err => console.log('error creating user:', err) )
+            }
+
+
+    </script>
 </body>
 </html>

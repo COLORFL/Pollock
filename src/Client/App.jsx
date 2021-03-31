@@ -9,7 +9,6 @@ import ColorPicker from "./components/ColorPicker";
 import ChangePaletteDesign from "./components/ChangePaletteDesign";
 
 
-
 const App = () => {
 	return (	
 		<Router>

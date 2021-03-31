@@ -11,13 +11,21 @@ const StateProvider = ({children}: any) => {
     
     const [paletteName, setPaletteName] = useState(['greenShade', 'blueShade', 'rainbow']);
 
+
+    // const [paletteColor, setPaletteColor] = useState('#fff');
+    // const [paletteName, setPaletteName] = useState('');
+    const [savedPalette, setSavedPalette] = useState({})
+
+
     return (
         <StateContext.Provider 
             value={{ 
-                paletteColor: paletteColor, 
+                paletteColor, 
                 setPaletteColor,
-                paletteName: paletteName, 
-                setPaletteName
+                paletteName, 
+                setPaletteName,
+                savedPalette,
+                setSavedPalette
             }}>
             { children }
         </StateContext.Provider>
