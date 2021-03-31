@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-    mode: process.env.NODE_ENV,  //'development', //development, production(ugl & min) 
-    entry: path.resolve(__dirname, './src/client/index.js'),
+    mode: 'development',//process.env.NODE_ENV,  //'development', //development, production(ugl & min) 
+    entry: path.resolve(__dirname, './src/Client/index.js'),
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
@@ -22,7 +22,6 @@ module.exports = {
             '/': {
                 target: 'http://localhost:8000',
                 secure: false,
-                changeOrigin: true
             }            
         },
         compress: true,
@@ -48,7 +47,11 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 use: ["style-loader", "css-loader"]
-            }
+            },
+            {
+                test: /\.tsx?$/,
+                use: [{ loader: "ts-loader", options: { happyPackMode: true } }],
+              },
         ]
     },
     //plugins: //[ // Utilize for actual web deployment of this application

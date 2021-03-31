@@ -61,6 +61,7 @@
     "react": "^17.0.2",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
+    "react-eyedropper": "0.0.10",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "simple-color-picker": "^1.0.4",
