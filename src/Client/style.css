@@ -23,6 +23,8 @@
 
 }
 #nav-ul {
+  padding: 30px;
+
   position: relative;
   width: 40%;
   display: flex;
