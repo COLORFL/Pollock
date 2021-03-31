@@ -31,7 +31,7 @@ authController.validateUser = (req, res, next) => {
 authController.createUser = async (req, res, next) => {
   const { email, firstName, lastName, password, funFact } = req.body;
   console.log('pass', password);
-  const queryStr = `insert into Users (email, username, fun_fact) values 
+  const queryStr = `inesert into Users (email, username, fun_fact) values 
   ($1, 'person123', $2);`;
   // ` insert into l_users (first_name, last_name, password) values
   //                           ($1, $2, $3); `;

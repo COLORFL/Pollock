@@ -4,8 +4,8 @@ const app = express();
 const authController = require('./controllers/authController.js');
 
 const paletteRouter = require('./routes/paletteRouter.js');
-const userRouter = require('./routes/userRouter.js');
-const authRouter = require('./routes/authRouter.js')
+// const userRouter = require('./routes/userRouter.js');
+// const authRouter = require('./routes/authRouter.js')
 // const cors = require('cors');
 const bodyParser = require('body-parser');
 // const passport = require('passport');
@@ -33,9 +33,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/client', express.static(path.resolve(__dirname, '../Client')));
 // app.use(express.static('style'));
 
-app.use('/palettes', paletteRouter);
-app.use('/auth', authRouter);
-app.use('/user', userRouter);
+app.use('/palette', paletteRouter);
+// app.use('/auth', authRouter);
+// app.use('/user', userRouter);
 
 
 app.get('/newUser', (req, res) => {
@@ -60,7 +60,7 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 // global error handler
 app.use((err, req, res, next) => {
-  console.log(err);
+  console.log("Global error", err);
   res.status(500).json(err);
 });
 

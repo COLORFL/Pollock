@@ -21,7 +21,9 @@ userController.createUser = (req, res, next) =>{
      })
      .catch(err => {
          .next({
-             log: 'Error in userController: failed to create new user'
+             log: 'Error in userController: failed to create new user',
+             status: 400,
+             message: {err: 'Failed to create new user'}
          })
      })
     
@@ -29,5 +31,74 @@ userController.createUser = (req, res, next) =>{
 
 
 //GET
+userController.getUser = (req,res, next) =>{
+   const {email, username, fun_fact} = req.body;
+
+   const values = [ email, username, fun_fact]
+   
+   const getStr = `SELECT * FROM users`
+
+   db.query(getStr, values)
+    .then(data => {
+        console.log(data.rows)
+        res.locals.getUser = data.rows
+        return next()
+    })
+    .catch( err =>{
+        .next({
+            log: 'Error in userController.getUser: failed to get user information',
+            status: 400,
+            message: {err: 'Failed to get user information'}
+        })
+    })
+
+
+}
+
+//UPDATE
+userController.updateUser = (req,res, next) =>{
+    const {email, username, fun_fact} = req.body;
+ 
+    const values = [ email, username, fun_fact]
+    
+    const updateStr = `UPDATE users SET email = $1 WHERE username = $2 AND fun_fact= $3`
+ 
+    db.query(updateStr, values)
+     .then(data => {
+         return next()
+     })
+     .catch( err =>{
+         .next({
+             log: 'Error in userController.updateUser: failed to update user information',
+             status: 400,
+             message: {err: 'Failed to update user information'}
+         })
+     })
+ 
+ 
+ }
 
 //DELETE
+userController.deleteUser = (req,res, next) =>{
+    const {email, username, fun_fact} = req.params;
+ 
+    const values = [ email, username, fun_fact]
+    
+    const getStr = `SELECT * FROM users`
+ 
+    db.query(getStr, values)
+     .then(data => {
+         console.log(data.rows)
+         res.locals.getUser = data.rows
+         return next()
+     })
+     .catch( err =>{
+         .next({
+             log: 'Error in userController.getUser: failed to get user information',
+             status: 400,
+             message: {err: 'Failed to get user information'}
+         })
+     })
+ 
+ 
+ }
