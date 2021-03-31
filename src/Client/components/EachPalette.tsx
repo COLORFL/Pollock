@@ -1,11 +1,13 @@
 import React from "react";
 
-const EachPalette = (paletteName, palette) => {
-  // console.log('paletteName: ', paletteName);
-  // console.log('palette: ', palette);
+const EachPalette = ({paletteName, palette}) => {
+  console.log('paletteName: ', paletteName);
+  console.log('palette: ', palette);
 
   const setOfPalettes = palette.map((ele, i) => (
-    <div key={i} className="colorBox" style={{color: `${ele}`}} />
+    <div key={i} className="colorBox" style={{'backgroundColor': `${ele}`}}>
+      {ele}
+    </div>
   ))
 
   return (

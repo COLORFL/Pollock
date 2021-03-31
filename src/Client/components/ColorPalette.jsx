@@ -1,3 +1,4 @@
+import { ContactlessOutlined } from "@material-ui/icons";
 import React, { Component, useContext, useEffect, useState} from "react";
 import {StateContext} from "../provider/StateProvider";
 
@@ -15,21 +16,28 @@ class ColorPalette extends Component {
     };
   };
 
-  // componentDidMount() {
-  //   // dummy hardcoded data
-  //   const email = 'k@s.com';
-  //   fetch(`/colors/${email}`)
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log('res: ', res);
-  //       const paletteNameArray = new Array(res.data.length + 1).fill(res.data.rows(0));
-  //       const paletteArray = new Array(res.data.length + 1).fill(res.data.rows(0));
-  //       this.setState({palette_names: paletteNameArray, palette: paletteArray});
-  //     })
-  //     .catch(err => {
-  //       console.log('Error: ', err);
-  //     })
-  // }
+  componentDidMount() {
+    // dummy hardcoded data
+    const email = 'k@s.com';
+    const body = {email};
+    const requestBody = JSON.stringify(body);
+    fetch(`/palette/getAll`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: requestBody
+    })
+      .then(res => res.json())
+      .then(res => {
+        // console.log('res: ', res);
+        // const paletteNameArray = new Array(res.data.length + 1).fill(res.data.rows(0));
+        // const paletteArray = new Array(res.data.length + 1).fill(res.data.rows(0));
+        // this.setState({palette_names: paletteNameArray, palette: paletteArray});
+        console.log(res);
+      })
+      .catch(err => {
+        console.log('Error: ', err);
+      })
+  }
 
   render() {
     const { collection } = this.state;
@@ -37,6 +45,7 @@ class ColorPalette extends Component {
     if (!collection) return null;
 
     const paletteElems = collection.map((ele, i) => {
+      console.log("Element's Keys: ",Object.keys(ele));
       return (
         <EachPalette
           key={i}

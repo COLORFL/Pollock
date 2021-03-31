@@ -74,3 +74,22 @@ display: inline-block;
   position: relative;
   align-self: center;
 } */
+
+.allPalettes {
+  border: 1px solid blue;
+}
+
+.eachPalette {
+  border: 1px solid red;
+}
+
+.colorBoxes {
+  width: 100px;
+}
+
+.colorBox {
+  width: 3em;
+  height: 3em;
+  border: 1px solid black;
+}
+
