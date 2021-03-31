@@ -3,17 +3,17 @@ const router = express.Router();
 
 
 
-const userController = require('../controllers/userController.js');
+const userController = require('../controllers/paletteController.js');
 
-router.get('/', userController.getPalette, (req,res)=>{
+router.get('/', paletteController.getPalette, (req,res)=>{
     res.status(200).json(res.locals.getPalette)
 })
 
-router.post('/', userController.createPalette, (req,res)=>{
+router.post('/', paletteController.createPalette, (req,res)=>{
     res.status(200).json(res.locals.createPalette)
 })
 
-router.delete('/', userController.deletePalette, (req,res)=>{
+router.delete('/', paletteController.deletePalette, (req,res)=>{
     res.status(200).json(res.locals.deletePalette)
 })
 
