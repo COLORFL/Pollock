@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import {StateContext} from "../provider/StateProvider";
 
-const ColorPallet = () => {
+const ColorPallete = () => {
     return (
         <div>
-
+            <h1>ColorPallete</h1>            
         </div>
     )
 };
 
-export default ColorPallet;
+export default ColorPallete;
