@@ -6,3 +6,7 @@ render(
   <App />, 
   document.querySelector('#root')
 );
+//html landing page with login
+//html register
+//---> check auth
+//-->redirected to our react app

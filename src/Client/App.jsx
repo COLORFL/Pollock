@@ -7,6 +7,7 @@ import ColorPicker from "./components/ColorPicker";
 import ChangePalleteDesign from "./components/ChangePalleteDesign";
 
 
+
 const App = () => {
 	return (	
 		<Router>
