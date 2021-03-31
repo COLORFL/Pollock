@@ -1,7 +1,7 @@
 const { NetworkCell } = require('@material-ui/icons')
-const db = require('../server/dbModel.js')
+const db = require('../dbModel.js')
 
-export const userController = {}
+const userController = {}
 
 //POST
 userController.createPalette = (req, res, next)=>{
@@ -11,7 +11,6 @@ userController.createPalette = (req, res, next)=>{
     const values = [ palette, email_fk]
 
     const str = `INSERT INTO colors (pallete, email_fk) VALUES ($1, $2) RETURNING palette` 
-
 
     console.log(values)
     
@@ -31,26 +30,11 @@ userController.createPalette = (req, res, next)=>{
   
 }
 
-// taskController.postTask = (req, res, next) => {
-  
-//     const {task} = req.params;  
-    
-//     const queryStr = insert into Task (user_id, task_id, item, created_at) 
-//                       values ($1, DEFAULT, $2, CURRENT_TIMESTAMP ) RETURNING item;`
-  
-//     db.query(queryStr, [req.cookies.uid, task])
-//     .then(queryRes => {
-//       res.locals.task = queryRes.rows[0].item;
-//       next();    
-//     })
-//     .catch(e=>{
-//       console.log('error during login query: ', e)
-//     });
-//   }
+
 //GET 
 userController.getPalette = (req, res, next) => {
     const {email} = req.body;
-    const queryStr = `select colors from Colors where email = $1;`
+    const queryStr = `select * from Colors where email = $1;`
     db.query (query, [username])
     .then(data => {
         res.locals.colors = data.rows[0];
@@ -72,9 +56,9 @@ userController.getPalette = (req, res, next) => {
 
 //DELETE 
 userController.deletePalette = (req, res, next) => {
-    const {email} = req.params
+    const {email_fk} = req.params
     
-    const values = [email] 
+    const values = [email_fk] 
 
     const deleteStr = `DELETE FROM colors WHERE email = $1`
 
@@ -94,3 +78,5 @@ userController.deletePalette = (req, res, next) => {
     })
     
 }
+
+module.exports = userController

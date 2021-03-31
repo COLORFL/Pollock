@@ -1,8 +1,9 @@
-const db = require('../server/dbModel.js')
+const db = require('../dbModel.js')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 
-export const authController = {};
+
+const authController = {};
 
 
 // const sqlStr = `INSERT INTO people (name, gender, species_id, birth_year, eye_color, skin_color, hair_color, mass, height, homeworld_id)
@@ -11,7 +12,7 @@ export const authController = {};
 authController.validateUser = (req, res, next) => {
     const { email, password } = req.body;
     console.log(email, password)
-    const queryStr = `select * from Users where email_fk = $1 AND password = $2;`
+    const queryStr = `select * from l_users where email_fk = $1 AND password = $2;`
       db.query(queryStr, [email, password])
             .then(result => {
               bcrypt.compare(password, result.rows[0].password);
@@ -29,7 +30,7 @@ authController.validateUser = (req, res, next) => {
   }
 
 authController.createUser = (req, res, next) =>{
-    const {email, name, email, password, funFact} = req.body
+    const {email, name, password, funFact} = req.body
     const queryStrUser = `insert into users (firstname, lastname, email, password, funFact) values 
                             ($1, $2, $3);`
   
@@ -47,3 +48,5 @@ authController.createUser = (req, res, next) =>{
         })    
       })      
 }
+
+module.exports = authController;

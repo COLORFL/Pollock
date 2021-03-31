@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 
-const userController = require('./controllers/userController.js');
+const userController = require('../controllers/userController.js');
 
 router.get('/', userController.getPalette, (req,res)=>{
     res.status(200).json(res.locals.getPalette)
@@ -17,4 +17,4 @@ router.delete('/', userController.deletePalette, (req,res)=>{
     res.status(200).json(res.locals.deletePalette)
 })
 
-module.export = router;
+module.exports = router;
