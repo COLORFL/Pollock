@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+// import SignIn from "./components/SignIn";
+// import SignUp from "./components/SignUp";
 
 
 
@@ -11,7 +11,7 @@ const App = () => {
 			<div>
 				<Switch>
 					<Route exact path="/">
-						<SignIn />
+						{/* <SignIn /> */}
 					</Route>
 					{/* <Route path="/signup">
 						<SignUp />
