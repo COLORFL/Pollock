@@ -7,12 +7,44 @@
     <title>Document</title>
 </head>
 <body>
-    <input id="email" type="text" placeholder= "Email Address"/>
-                <input id="password" type="text" placeholder= "Password"/>
+  <form action="" method="post">
+    <input id="email" type="email" placeholder= "Email Address" value='k@s.com' required/>
+                <input id="password" type="password" placeholder= "Password" value='234' required/>
                 <input type="submit" value="signin" />
             </form>
             <button type="reset" className="button">Reset Password</button>
             <button type="button" className="button">OAuth</button>
-            <button type="button" className="button">Sign In</button>
+            <input id="submit" type="submit" className="button" value="Sign-in">
+  </form> 
+    <script>
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        document.getElementById('submit').addEventListener('click', () => login())
+        function login(){
+    // event.preventDefault();
+        const inputEmail = email.value;
+        const inputPassword = password.value;
+        // ask if this user can go to next
+        const userRequest = JSON.stringify({email: inputEmail, password: inputPassword});
+        // console.log(userRequest);
+        // do something with response that allows/denies user to move on
+        console.log('user info', userRequest)
+        fetch('/auth/signin', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: userRequest
+        })
+          .then(response => response.json())
+          .then(result => {
+            console.log('login info:', result);
+            if (result){
+              console.log('result****', result)
+            } 
+          })
+          .catch(err => console.log('error sending the request:', err) )
+      };
+
+      
+    </script>
 </body>
 </html>

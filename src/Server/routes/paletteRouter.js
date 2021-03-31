@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 
-const userController = require('../controllers/paletteController.js');
+const paletteController = require('../controllers/paletteController.js');
 
 router.get('/', paletteController.getPalette, (req,res)=>{
     res.status(200).json(res.locals.getPalette)

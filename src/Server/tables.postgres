@@ -27,6 +27,7 @@ CREATE TABLE Colors (
     _id SERIAL PRIMARY KEY,
     palette VARCHAR (280) not null,
      email_fk varchar NOT NULL,
+     palette_name varchar (255) not null , 
   FOREIGN KEY (email_fk)
     REFERENCES users(email)
 )

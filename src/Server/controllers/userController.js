@@ -12,6 +12,18 @@ userController.createUser = (req, res, next) =>{
 
     const queryStr = `INSERT INTO users (email, username, fun_fact) VALUES ($1, $2, $3) RETURNING users` 
 
+    console.log(values)
+
+    dbModel.query(str, values)
+     .then(data => {
+         res.locals.createUser = data.rows
+         .next()
+     })
+     .catch(err => {
+         .next({
+             log: 'Error in userController: failed to create new user'
+         })
+     })
     
 }
 

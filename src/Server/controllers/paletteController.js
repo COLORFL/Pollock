@@ -30,7 +30,6 @@ paletteController.createPalette = (req, res, next)=>{
   
 }
 
-
 //GET 
 paletteController.getPalette = (req, res, next) => {
     const {email} = req.body;
@@ -49,7 +48,22 @@ paletteController.getPalette = (req, res, next) => {
     })
 }
 
-
+//UPDATE
+paletteController.upatePalette = (req, res, next) => {
+    const { update, email } = req.body;
+    const updateStr = `UPDATE colors SET palette = $1 WHERE email_fk = $2;`;
+    db.query(updateStr, [update, email])
+      .then((data) => {
+        return next();
+      })
+      .catch((err) => {
+        next({
+          log: 'Error in userController.updatePalette: failed to delete message',
+          status: 304,
+          message: { err: 'Failed to update palette' },
+        });
+      });
+  };
 
 
 
