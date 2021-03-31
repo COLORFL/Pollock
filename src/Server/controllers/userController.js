@@ -49,14 +49,20 @@ userController.createPalette = (req, res, next)=>{
 //   }
 //GET 
 userController.getPalette = (req, res, next) => {
-    const {username} = req.body;
-    const queryStr = `select colors from Colors where email_fk = $1;`
+    const {email} = req.body;
+    const queryStr = `select colors from Colors where email = $1;`
     db.query (query, [username])
     .then(data => {
         res.locals.colors = data.rows[0];
         return next();
     })
-    .catch(err => console.log('error  in get palette controller'))
+    .catch(err =>{
+        next({
+            log:'Error in userController.getPalette: failed to get message',
+            status: 400,
+            message: {err: 'Failed to get palette'}
+        })
+    })
 }
 
 
@@ -66,11 +72,11 @@ userController.getPalette = (req, res, next) => {
 
 //DELETE 
 userController.deletePalette = (req, res, next) => {
-    const {email_fk} = req.params
+    const {email} = req.params
     
-    const values = [email_fk] 
+    const values = [email] 
 
-    const deleteStr = `DELETE FROM colors WHERE email_fk = $1`
+    const deleteStr = `DELETE FROM colors WHERE email = $1`
 
     console.log(email_fk)
     

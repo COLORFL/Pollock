@@ -4,23 +4,22 @@ CREATE TABLE Users(
     fun_fact VARCHAR (280) not null
 )
 
+
 CREATE TABLE l_users(
     _id SERIAL PRIMARY KEY,
     first_name VARCHAR (280) not null,
     last_name VARCHAR (280) not null,
-     email varchar NOT NULL,
      password VARCHAR (280) not null,
-     username_fk VARCHAR(280) NOT NULL,
-   FOREIGN KEY (username_fk) 
+    email_fk VARCHAR(280) NOT NULL,
+   FOREIGN KEY (email_fk) 
     REFERENCES users(username)
 )
 
 CREATE TABLE OAuth(
   oauth_id varchar PRIMARY KEY, 
   oauth_type varchar NOT NULL,   
-  email varchar NOT NULL,
-  username_fk VARCHAR (280) NOT NULL,
-  FOREIGN KEY (username_fk) 
+ email_fk VARCHAR (280) NOT NULL,
+  FOREIGN KEY (email_fk) 
     REFERENCES users(username)
 )
 
@@ -28,8 +27,8 @@ CREATE TABLE OAuth(
 CREATE TABLE Colors (
     _id SERIAL PRIMARY KEY,
     palette VARCHAR (280) not null,
-     username_fk varchar NOT NULL,
-  FOREIGN KEY (username_fk)
+     email_fk varchar NOT NULL,
+  FOREIGN KEY (email_fk)
     REFERENCES users(username)
 )
 

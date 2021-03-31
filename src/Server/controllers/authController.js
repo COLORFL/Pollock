@@ -4,31 +4,22 @@ const passport = require('passport')
 
 export const authController = {};
 
-authController.validateUser = () => {
-    if (!req.body.email || !req.body.password  || typeof req.body.email !== 'string' || typeof req.body.password !== 'string') {
-        return next({
-          err: 'Invalid request'
-        });
-      }
-      return next();
-};
 
 // const sqlStr = `INSERT INTO people (name, gender, species_id, birth_year, eye_color, skin_color, hair_color, mass, height, homeworld_id)
 // VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
 
-authController.userCategory = (req, res, next) => {
+authController.validateUser = (req, res, next) => {
     const { email, password } = req.body;
     console.log(email, password)
     const queryStr = `select * from Users where email_fk = $1 AND password = $2;`
-
-        bcrypt.compare(password, user.password)
-          .then(result => {
+      db.query(queryStr, [email, password])
+            .then(result => {
+              bcrypt.compare(password, result.rows[0].password);
             console.log('result', result)
             if(!result) {
               return next(err)
             } else {
-              console.log('user', user.password)
-              res.locals.user = user;
+              console.log('user', password)
               return next();
             }
           })
@@ -47,6 +38,7 @@ authController.createUser = (req, res, next) =>{
     .then(hashedPassword =>{
       db.query(queryStrUser, [firstname, lastname, email, password, funFact])
         .then(hashedResult =>{
+          res.locals.user = hashedResult;
           return next();
         })    
         .catch(error=>{
