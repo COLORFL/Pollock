@@ -8,43 +8,41 @@ CREATE TABLE l_users(
     _id SERIAL PRIMARY KEY,
     first_name VARCHAR (280) not null,
     last_name VARCHAR (280) not null,
-     email varchar NOT NULL,
      password VARCHAR (280) not null,
-     username_fk VARCHAR(280) NOT NULL,
-   FOREIGN KEY (username_fk) 
-    REFERENCES users(username)
+    email_fk VARCHAR(280) NOT NULL,
+   FOREIGN KEY (email_fk) 
+    REFERENCES users(email)
 )
 
 CREATE TABLE OAuth(
   oauth_id varchar PRIMARY KEY, 
   oauth_type varchar NOT NULL,   
-  email varchar NOT NULL,
-  username_fk VARCHAR (280) NOT NULL,
-  FOREIGN KEY (username_fk) 
-    REFERENCES users(username)
+ email_fk VARCHAR (280) NOT NULL,
+  FOREIGN KEY (email_fk) 
+    REFERENCES users(email)
 )
 
 --create color table
 CREATE TABLE Colors (
     _id SERIAL PRIMARY KEY,
     palette VARCHAR (280) not null,
-     username_fk varchar NOT NULL,
-  FOREIGN KEY (username_fk)
-    REFERENCES users(username)
+     email_fk varchar NOT NULL,
+  FOREIGN KEY (email_fk)
+    REFERENCES users(email)
 )
 
 --local users
 INSERT INTO  Users (email, username, fun_fact) VALUES ('k@s.com', 'justspicee', 'i like takis')
-INSERT INTO l_users(_id, first_name, last_name, email, password, username_fk) VALUES (default, 'Kim', 'Spicer', 'k@s.com', '234', 'justspicee')
+INSERT INTO l_users(_id, first_name, last_name, password, email_fk) VALUES (default, 'Kim', 'Spicer', '234','k@s.com' )
 
 
 
 --oauth users 
 INSERT INTO Users (email, username, fun_fact) VALUES ('k@s.com', 'justspicee', 'i like takis')
-INSERT INTO OAuth( oauth_id, oauth_type, email, username_fk) VALUES (123456, 'google', 'k@s.com','justspicee')
+INSERT INTO OAuth( oauth_id, oauth_type, email_fk) VALUES (123456, 'google', 'k@s.com')
 
 --colors
-INSERT INTO Colors (_id, palette, username_fk) VALUES (default, '[rosa blanca, aquamarine, periwinkle, cerulean, amethyst]', 'justspicee')
+INSERT INTO Colors (_id, palette, email_fk) VALUES (default, '[rosa blanca, aquamarine, periwinkle, cerulean, amethyst]', 'k@s.com')
 
 
 
