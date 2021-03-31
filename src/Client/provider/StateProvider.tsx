@@ -3,18 +3,20 @@ import React, { useState } from 'react';
 export const StateContext = React.createContext({});
 
 const StateProvider = ({children}: any) => {
-    const [palletColor, setPalletColor] = useState('');
-    const [palletName, setPalletName] = useState('');
+    const [paletteColor, setPaletteColor] = useState('#fff');
+    
+    const [paletteName, setPaletteName] = useState('');
     return (
         <StateContext.Provider 
-        value = {{ 
-           palletColor, 
-           setPalletColor,
-           palletName, 
-           setPalletName
-          }}>
-          { children }
+            value={{ 
+                paletteColor: paletteColor, 
+                setPaletteColor,
+                paletteName: paletteName, 
+                setPaletteName
+            }}>
+            { children }
         </StateContext.Provider>
-    )};
+    )
+};
 
-    export default StateProvider;
+export default StateProvider;

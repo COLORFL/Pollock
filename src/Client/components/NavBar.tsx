@@ -11,16 +11,16 @@ const NavBar = () => {
           <li>Dashboard</li>
         </Link>
         <Link to='/UserInfo'>
-          <li>Username</li>
+          <li>Profile</li>
         </Link>
-        <Link to='/ColorPallete'>
-          <li>Saved Color Pallete</li>
+        <Link to='/ColorPalette'>
+          <li>Saved Color Palette</li>
         </Link>
         <Link to='/ColorPicker'>
           <li>Color Picker</li>
         </Link>
-        <Link to='/ChangePallete'>
-          <li>Change Pallete Design</li>
+        <Link to='/ChangePalette'>
+          <li>Change Palette Design</li>
         </Link>
       </ul>
     </div>
