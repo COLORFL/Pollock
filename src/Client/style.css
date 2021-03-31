@@ -59,7 +59,15 @@
   padding: auto;
 display: inline-block;
 }
-
+.dashboard{
+  position: relative;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
 
 /* h1{
   color: blueviolet;

@@ -3,8 +3,9 @@ import { StateContext } from "../provider/StateProvider";
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className='dashboard'>
+      {/* <h1>Dashboard</h1> */}
+      <img src="../Client/assts/pollock2.png" alt=""/>
     </div>
   )
 };
