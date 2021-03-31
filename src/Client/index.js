@@ -1,8 +1,17 @@
-// import React, { Component } from 'react';
-// import { render } from 'react-dom';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import App from "./App.jsx";
+import StateProvider from './provider/StateProvider';
 
-// const App = () => {
-//   return <div>hello</div>
-// }
-
-// render(<App />, document.querySelector('#root'));
+render(
+  
+ 
+  <StateProvider>
+    <App/>
+  </StateProvider>, 
+  document.querySelector('#root')
+);
+//html landing page with login
+//html register
+//---> check auth
+//-->redirected to our react app

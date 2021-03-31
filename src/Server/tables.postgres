@@ -1,5 +1,5 @@
 CREATE TABLE Users(
-    _id SERIAL PRIMARY KEY,
+    email VARCHAR PRIMARY KEY,
     username VARCHAR (280) UNIQUE not null,
     fun_fact VARCHAR (280) not null
 )
@@ -8,26 +8,44 @@ CREATE TABLE l_users(
     _id SERIAL PRIMARY KEY,
     first_name VARCHAR (280) not null,
     last_name VARCHAR (280) not null,
-    email VARCHAR (280) UNIQUE not null,
+     password VARCHAR (280) not null,
+    email_fk VARCHAR(280) NOT NULL,
+   FOREIGN KEY (email_fk) 
+    REFERENCES users(email)
 )
 
 CREATE TABLE OAuth(
   oauth_id varchar PRIMARY KEY, 
   oauth_type varchar NOT NULL,   
-  email_fk varchar NOT NULL,
+ email_fk VARCHAR (280) NOT NULL,
   FOREIGN KEY (email_fk) 
     REFERENCES users(email)
 )
 
+--create color table
+CREATE TABLE Colors (
+    _id SERIAL PRIMARY KEY,
+    palette VARCHAR (280) not null,
+     email_fk varchar NOT NULL,
+     palette_name varchar (255) not null , 
+  FOREIGN KEY (email_fk)
+    REFERENCES users(email)
+)
 
 --local users
-INSERT INTO  Users (_id, username, fun_fact) VALUES (default, 'justspicee', 'i like takis')
-INSERT INTO l_users(_id, first_name, last_name, email) VALUES (default, 'Kim', 'Spicer', 'k@s.com')
+INSERT INTO  Users (email, username, fun_fact) VALUES ('k@s.com', 'justspicee', 'i like takis')
+INSERT INTO l_users(_id, first_name, last_name, password, email_fk) VALUES (default, 'Kim', 'Spicer', '234','k@s.com' )
+
 
 
 --oauth users 
-INSERT INTO Users (_id, username, fun_fact) VALUES (default, 'justspicee', 'i like takis')
+INSERT INTO Users (email, username, fun_fact) VALUES ('k@s.com', 'justspicee', 'i like takis')
 INSERT INTO OAuth( oauth_id, oauth_type, email_fk) VALUES (123456, 'google', 'k@s.com')
+
+--colors
+INSERT INTO Colors (_id, palette, email_fk) VALUES (default, '[rosa blanca, aquamarine, periwinkle, cerulean, amethyst]', 'k@s.com')
+
+
 
 
 -- DROP TABLE IF EXISTS userIp;
