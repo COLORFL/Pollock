@@ -6,20 +6,19 @@ import Dashboard from "./components/Dashboard";
 import UserInfo from "./components/UserInfo";
 import ColorPalette from "./components/ColorPalette";
 import ColorPicker from "./components/ColorPicker";
-import ChangePaletteDesign from "./components/ChangePaletteDesign";
 
 
 const App = () => {
 	return (	
 		<Router>
-			<div>
+			<div id="main">
 				<NavBar />
 				<Switch>
 					<Route exact path="/" component={Dashboard} />
+					<Route exact path="/Home" component={Dashboard} />
 					<Route exact path="/UserInfo" component={UserInfo} />
 					<Route exact path="/ColorPalette" component={ColorPalette} />
 					<Route exact path="/ColorPicker" component={ColorPicker} />
-					<Route exact path="/ChangePalette" component={ChangePaletteDesign} />
 				</Switch>
 			</div>
 	  </Router>
