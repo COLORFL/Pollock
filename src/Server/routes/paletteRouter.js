@@ -4,6 +4,7 @@ const router = express.Router();
 const paletteController = require('../controllers/paletteController.js');
 
 router.post('/getAll', paletteController.getPalettes, (req,res)=>{
+    console.log("Response Cookie: ",req.cookies)
     res.status(200).json(res.locals.getPalettes)
 })
 

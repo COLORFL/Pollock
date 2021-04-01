@@ -15,7 +15,17 @@ const ColorPicker = () => {
     const [Color4, setColor4]= useState('#ffffff')
     const [Color5, setColor5]= useState('#ffffff')
     const [formKey, setFormKey]= useState(0)
-    const { paletteName, setPaletteName, savedPalette, setSavedPalette }: any = useContext(StateContext)
+    // const [showColorPicker, setshowColorPicker] = useState(false)
+    // const [paletteName, setPaletteName] = useState('');
+    const { 
+        paletteName, 
+        setPaletteName, 
+        savedPalette, 
+        setSavedPalette,
+        cookieMonster,
+        setCookieMonster
+    }: any = useContext(StateContext)
+    
     const handleSavePalette = () => {
         const colors = [Color1, Color2, Color3, Color4, Color5,]
         const colorsString = `[` + colors.join(",") + `]`;
@@ -31,7 +41,7 @@ const ColorPicker = () => {
         const email = 'k@s.com';
         const body = {
             palette:newColors,
-            email:email,
+            email:cookieMonster,
             palette_name:paletteName
         };
         const requestBody = JSON.stringify(body);
