@@ -1,6 +1,5 @@
 const db = require('../dbModel.js');
 const bcrypt = require('bcrypt');
-const passport = require('passport');
 
 const authController = {};
 
