@@ -22,11 +22,45 @@ const ColorPicker = () => {
     
     const handleSavePalette = () => {
         const colors = [Color1, Color2, Color3, Color4, Color5,]
-        setSavedPalette(savedPalette[paletteName] = colors)
+        const colorsString = `[` + colors.join(",") + `]`;
+        console.log("Test output:", colorsString);
+        // setSavedPalette(savedPalette[paletteName] = colors)
         setFormKey(formKey+1)
-        console.log(savedPalette,colors)
+        // console.log('savedPalette:',savedPalette)
+        console.log('paletteName:',paletteName)
+        console.log('colors:',colors)
+        let newColors = colors.map(el => `"${el}"`).join(', ');
+        newColors = '[' + newColors + ']';
+        console.log('newColors is: ',newColors)
+        const list2 = newColors.split(',')
+        console.log('list2 is: ', list2)
+    // console.log(`select * from tableName where id in (${list})`);
         //here is where we will input the palette into the db
-        
+        const email = 'k@s.com';
+        const body = {
+            palette:newColors,
+            email:email,
+            palette_name:paletteName
+
+        };
+        const requestBody = JSON.stringify(body);
+        console.log(body)
+        fetch(`/palette/`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: requestBody
+        })
+        .then(res => res.json())
+        .then(res => {
+          console.log('we made it to the db!! here is the response: ',res);
+        //   let array = res[0].palette.split(',')
+        //   const finalArray = Array.from(res[0].palette.slice(1,-1))
+          console.log('in the db 2222222',res[0].palette);
+        //   console.log(finalArray)
+        })
+        .catch(err => {
+        console.log('Error: ', err);
+        })
     }
     return (
         <div className='color-picker'>
@@ -35,7 +69,7 @@ const ColorPicker = () => {
             <SwatchesPicker 
             color={activeColor}
             onChange={(newColor)=>{setactiveColor(newColor.hex)
-            console.log('color 1 is:', activeColor )}}
+            console.log('active color is:', activeColor )}}
             />
             <div className='colorButton'>
                 <button  style={{backgroundColor: Color1}} onClick={()=>{setColor1(activeColor);console.log('Color1 is:',Color1 )}}>save color 1</button> 
