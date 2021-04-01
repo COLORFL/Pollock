@@ -14,14 +14,16 @@ router.post(
   }
 );
 
-router.post(
+router.use(
   '/getUser',
   authController.validateUser,
   authController.getInfo,
   (req, res) => {
-    res.cookie('email', res.locals.info.email);
-    console.log('cookie stuff backend----', req.cookie, res.cookie);
-    res.status(200).json(res.locals.all);
+    res.cookie('email', res.locals.info.email)
+    console.log('cookie stuff backend----')
+    res.redirect('/homeNew')
+    // res.send('im here!!!')
+   
   }
 );
 

@@ -48,9 +48,16 @@ app.get('/newUser', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../client/signup.html'));
 });
 
+app.get('/homeNew', (req, res) => {
+  // res.setHeader('Content-type', 'text/html');
+  // console.log('inside home!')
+  res.redirect('/home')
+  // res.sendFile(path.resolve(__dirname, '../client/index.html'));
+  // res.cookie('userEmail', 'j@j.com').send('cookie set'); //
+});
 app.get('/home', (req, res) => {
   res.setHeader('Content-type', 'text/html');
-  res.cookie('email', 'j@j.com').sendFile(path.resolve(__dirname, '../client/index.html'));
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
   // res.cookie('userEmail', 'j@j.com').send('cookie set'); //
 });
 
