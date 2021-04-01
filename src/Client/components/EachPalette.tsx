@@ -1,9 +1,7 @@
+import { Palette } from "@material-ui/icons";
 import React from "react";
 
-const EachPalette = ({paletteName, palette}) => {
-  console.log('paletteName: ', paletteName);
-  console.log('palette: ', palette);
-
+const EachPalette = ({_id, paletteName, email_fk, palette}) => {
   const setOfPalettes = palette.map((ele, i) => (
     <div key={i} className="colorBox" style={{'backgroundColor': `${ele}`}}>
       {ele}
@@ -19,7 +17,6 @@ const EachPalette = ({paletteName, palette}) => {
     </div>
   )
 };
-
 
 
 export default EachPalette;
