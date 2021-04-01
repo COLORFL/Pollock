@@ -10,11 +10,11 @@ import { setSourceMapRange } from "typescript";
 const ColorPicker = () => {
     // const {paletteColor, setPaletteColor}:  any = useContext(StateContext)
     const [activeColor, setactiveColor]= useState('#fff')
-    const [Color1, setColor1]= useState('')
-    const [Color2, setColor2]= useState('')
-    const [Color3, setColor3]= useState('')
-    const [Color4, setColor4]= useState('')
-    const [Color5, setColor5]= useState('')
+    const [Color1, setColor1]= useState('#ffffff')
+    const [Color2, setColor2]= useState('#ffffff')
+    const [Color3, setColor3]= useState('#ffffff')
+    const [Color4, setColor4]= useState('#ffffff')
+    const [Color5, setColor5]= useState('#ffffff')
     const [formKey, setFormKey]= useState(0)
     // const [showColorPicker, setshowColorPicker] = useState(false)
     // const [paletteName, setPaletteName] = useState('');
