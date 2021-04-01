@@ -5,7 +5,7 @@ const authController = require('./controllers/authController.js');
 
 const paletteRouter = require('./routes/paletteRouter.js');
 // const userRouter = require('./routes/userRouter.js');
-// const authRouter = require('./routes/authRouter.js')
+const authRouter = require('./routes/authRouter.js');
 // const cors = require('cors');
 const bodyParser = require('body-parser');
 // const passport = require('passport');
@@ -34,7 +34,7 @@ app.use('/client', express.static(path.resolve(__dirname, '../Client')));
 // app.use(express.static('style'));
 
 app.use('/palette', paletteRouter);
-// app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 // app.use('/user', userRouter);
 
 

@@ -31,29 +31,52 @@ authController.validateUser = (req, res, next) => {
 authController.createUser = async (req, res, next) => {
   const { email, firstName, lastName, password, funFact } = req.body;
   console.log('pass', password);
-  const queryStr = `inesert into Users (email, username, fun_fact) values 
-  ($1, 'person123', $2);`;
+  // const values = [email, email, funFact]
+  const queryStr = `insert into Users (email, username, fun_fact) values 
+  ($1, $2, $3) RETURNING * ;`;
   // ` insert into l_users (first_name, last_name, password) values
   //                           ($1, $2, $3); `;
   bcrypt
     .hash(password, 10)
     .then((hashedPassword) => {
       // db.query(queryStr, [firstName, lastName, hashedPassword, email, funFact]);
-      db.query(queryStr, [email, funFact]);
-      res.locals.info = {
-        email,
-        firstName,
-        lastName,
-        funFact,
-        password,
-        hashed: hashedPassword,
-      };
-      return next();
+      console.log('hashed password', hashedPassword)
+      db.query(queryStr, [email, email, funFact])
+      .then(data=>{
+        console.log(data)
+        res.locals.info = {
+          email,
+          firstName,
+          lastName,
+          funFact,
+          hashed: hashedPassword,
+        };
+        console.log(res.locals.info)
+        return next();
     })
-    .catch((error) => {
-      console.error('error with create user middle -----', error);
-      // res.redirect('/auth/register');
+    .catch(err=>{
+        next({
+            log:'Error in createUser query: failed to create User',
+            status:400,
+            message:{err: 'Failed to create new user', err}
+        })
     });
+    })
+    // .catch((error) => {
+    //   console.error('error with create user middle -----', error);
+    //   // res.redirect('/auth/register');
+    // });
 };
+//     );
+// };
+
+
+// .catch( err => {
+//   next({
+//       log:'Error in nameOfController.authenticateUser: failed to authenticate
+//       status:400,
+//       message:{err: 'Failed to create new palette', err}
+//   })
+// })
 
 module.exports = authController;
