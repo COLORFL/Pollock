@@ -9,13 +9,8 @@ const authRouter = require('./routes/authRouter.js');
 // const cors = require('cors');
 const bodyParser = require('body-parser');
 // const passport = require('passport');
-<<<<<<< HEAD
 const session = require('express-session');
 require('./passport-setup');
-=======
-// const cookieSession = require('cookie-session');
-// require('./passport-setup');
->>>>>>> 10c6c5ff626e35acdd3b4602b8b31a3030f448f4
 // app.use(cors());
 
 // parse application/x-www-form-urlencoded
