@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 
 export const StateContext = React.createContext({});
 
@@ -8,6 +9,10 @@ const StateProvider = ({children}: any) => {
         '[#1A5276, #5499C7, #A9CCE3, #BB8FCE, #E8DAEF]',
         '[#909497, #BDC3C7, #F2F3F4, #85929E, #ABB2B9]'
     ]);
+
+    const email = Cookies.get('email')
+
+    const [cookieMonster, setCookieMonster] = useState(email)
     
     const [paletteName, setPaletteName] = useState(['greenShade', 'blueShade', 'rainbow']);
 
@@ -25,7 +30,9 @@ const StateProvider = ({children}: any) => {
                 paletteName, 
                 setPaletteName,
                 savedPalette,
-                setSavedPalette
+                setSavedPalette,
+                cookieMonster,
+                setCookieMonster
             }}>
             { children }
         </StateContext.Provider>

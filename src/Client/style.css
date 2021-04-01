@@ -1,3 +1,155 @@
+/**********************/
+/* OVERALL PAGE STUFF */
+/**********************/
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+/******************/
+/* NAVIGATION BAR */
+/******************/
+#nav {
+  width: 15em;
+  height: 100%;
+}
+
+#nav-ul {
+  list-style: none;
+  background-color: rgb(26, 94, 90);
+  color: rgb(238, 238, 238);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  padding: 2em 1em;
+  font-size: 1.3em;
+  color: rgb(238, 238, 238);
+}
+
+li:visited {
+  color: rgb(238, 238, 238);
+}
+
+li:hover {
+  color: rgb(168, 133, 226);
+}
+
+/******************/
+/* SAVED PALETTES */
+/******************/
+.title {
+  margin: 2em 0;
+}
+
+.totalPalettes {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.eachPalette {
+  width: 98%;
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleAndTrash {
+  display: flex;
+}
+
+.paletteNames {
+  width: 400px;
+}
+
+#spaceFiller {
+  width: 100%;
+}
+
+.colorBoxes {
+  display: flex;
+  width: 100%;
+}
+
+.colorBox {
+  width: 24%;
+  border: 1px solid rgb(202, 202, 202);
+  text-align: center;
+  padding: 2em 0;
+  font-size: 1.8em;
+  color: rgb(243, 243, 243);
+  text-shadow: 1px 1px 1px #000;
+}
+
+.faTrash:hover {
+  color: rgb(39, 121, 197);
+}
+
+.faTrash:active {
+  color: rgb(214, 46, 46);
+}
+
+/******************/
+/**** SWITCHES ****/
+/******************/
+#dashboard{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-picker {
+  width: 100%;
+  height: 100%;
+  padding-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.myPalettes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/******************/
+/** OTHER STUFFS **/
+/******************/
 .box {
   box-sizing: border-box;
   width: 100px;
@@ -6,90 +158,25 @@
   display: inline-block;
 }
 
+
+
 .btn {
   display: block;
   margin-bottom: 20px;
 }
 
-#nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  min-height: 3em;
-  background: rgba(28, 43, 63, 0.658);
-  color: rgb(226, 226, 226);
-  text-decoration: none;
-
-}
-#nav-ul {
-  padding: 30px;
-
-  position: relative;
-  width: 40%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  text-decoration: none;
-  color: white;
-}
-
 .colorButton {
   /* position: relative; */
   padding: 30px;
-  
   display: inline-block;
   /* color:yellowgreen; */
   border: none;
   outline: none;
-  
-}
-.color-picker {
-  position: relative;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
 }
 
 #paletteName {
   padding: auto;
-display: inline-block;
-}
-.dashboard{
-  position: relative;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
+  display: inline-block;
 }
 
-/* h1{
-  color: blueviolet;
-  position: relative;
-  align-self: center;
-} */
-
-.allPalettes {
-  border: 1px solid blue;
-}
-
-.eachPalette {
-  border: 1px solid red;
-}
-
-.colorBoxes {
-  width: 100px;
-}
-
-.colorBox {
-  width: 3em;
-  height: 3em;
-  border: 1px solid black;
-}
 

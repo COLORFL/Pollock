@@ -8,11 +8,11 @@
 </head>
 <body>
     <form>
-        <input id="email" type="email" placeholder="Email Address" />
-        <input id="firstName" type="text" placeholder="First Name" />
-        <input id="lastName" type="text" placeholder="Last Name" />
-        <input id="password" type="password" placeholder="Password" />
-        <input id="funFact" type="text" placeholder="Fun Fact"/>
+        <input id="email" type="email" value="sign@up.com" placeholder="Email Address" />
+        <input id="firstName" type="text" value="signup" placeholder="First Name" />
+        <input id="lastName" type="text" value="signup" placeholder="Last Name" />
+        <input id="password" type="password" value="signup" placeholder="Password" />
+        <input id="funFact" type="text" value="signup" placeholder="Fun Fact"/>
         <input id='signup' type="submit" value="signup" />
     </form>
     <script>
@@ -34,7 +34,7 @@
                     password: inputPassword,
                     funFact: inputFunFact
                 })
-                fetch('/auth/signup', {
+                fetch('/auth/createUser', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: userInfo

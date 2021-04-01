@@ -35,13 +35,15 @@ authController.createUser = async (req, res, next) => {
   // const values = [email, email, funFact]
   const queryStr = `insert into Users (email, username, fun_fact) values 
   ($1, $2, $3) RETURNING * ;`;
-  // ` insert into l_users (first_name, last_name, password) values
-  //                           ($1, $2, $3); `;
+  const str2 = ` insert into l_users (first_name, last_name, password) values ($1, $2, $3); `;
   bcrypt.hash(password, 10).then((hashedPassword) => {
     // db.query(queryStr, [firstName, lastName, hashedPassword, email, funFact]);
-    console.log('hashed password', hashedPassword);
     db.query(queryStr, [email, email, funFact])
       .then((data) => {
+        db.query(str2, [firstName, lastName, hashedPassword])
+          .then((data) => console.log('second query', data.rows))
+          .catch((err) => console.log('error with second query ----', err));
+
         console.log(data);
         res.locals.info = {
           email,

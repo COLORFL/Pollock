@@ -3,6 +3,7 @@ const router = express.Router();
 const cookieParser = require('cookie-parser');
 const authController = require('../controllers/authController.js');
 router.use(cookieParser());
+
 router.post(
   '/createUser',
   authController.createUser,
@@ -23,4 +24,5 @@ router.post(
     res.status(200).json(res.locals.all);
   }
 );
+
 module.exports = router;

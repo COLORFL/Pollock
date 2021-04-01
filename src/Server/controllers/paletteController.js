@@ -68,21 +68,22 @@ paletteController.upatePalette = (req, res, next) => {
 
 //DELETE 
 paletteController.deletePalette = (req, res, next) => {
-    const {email, palette_name} = req.body 
-    const deleteStr = `DELETE FROM colors WHERE email_fk = $1 AND palette_name = $2 RETURNING *`
-    db.query(deleteStr, [email, palette_name])
-    .then(data =>{
-        console.log(data.rows)
-        res.locals.deletePalette = data.rows;
-        return next()
-    })
-    .catch(err =>{
-        next({
-            log:'Error in paletteController.deletePalette: failed to delete message',
-            status: 400,
-            message: {err: 'Failed to delete palette', err}
+    console.log('TESTING: ', req.params)
+    const value = [req.params.paletteName];
+    const deleteStr = `DELETE FROM colors WHERE palette_name = $1`
+    db.query(deleteStr, value)
+        .then(data =>{
+            // console.log(data.rows)
+            res.locals.deletePalette = data.rows;
+            return next()
         })
-    })
+        .catch(err =>{
+            next({
+                log:'Error in paletteController.deletePalette: failed to delete message',
+                status: 400,
+                message: {err: 'Failed to delete palette', err}
+            })
+        })
 }
 
 module.exports = paletteController;

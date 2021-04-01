@@ -1,3 +1,6 @@
 INSERT INTO colors (palette, email_fk, palette_name) VALUES ('[#0E6251, #148F77, #45B39D, #5DADE2, #21618C]', 'k@s.com', 'blueScale');
 INSERT INTO colors (palette, email_fk, palette_name) VALUES ('[#1A5276, #5499C7, #A9CCE3, #BB8FCE, #E8DAEF]', 'k@s.com', 'greenScale');
 INSERT INTO colors (palette, email_fk, palette_name) VALUES ('[#909497, #BDC3C7, #F2F3F4, #85929E, #ABB2B9]', 'k@s.com', 'rainbow');
+
+
+INSERT INTO colors (palette, email_fk, palette_name) VALUES ('[\'#0E6251\', \'#148F77\', \'#45B39D\', \'#3498DB\', \'#85C1E9\']', 'k@s.com', 'blueScale');

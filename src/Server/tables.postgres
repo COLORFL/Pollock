@@ -7,7 +7,7 @@ CREATE TABLE Users(
     first_name VARCHAR (280) not null,
     last_name VARCHAR (280) not null,
     password VARCHAR (280) not null,
-    email_fk VARCHAR(280) NOT NULL,
+    email_fk VARCHAR(280) UNIQUE NOT NULL,
     FOREIGN KEY (email_fk) REFERENCES users(email)
 ) CREATE TABLE OAuth(
     oauth_id varchar PRIMARY KEY,
