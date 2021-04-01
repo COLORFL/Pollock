@@ -32,7 +32,9 @@ const StateProvider = ({children}: any) => {
                 savedPalette,
                 setSavedPalette,
                 cookieMonster,
-                setCookieMonster
+                setCookieMonster,
+                collection,
+                setCollection
             }}>
             { children }
         </StateContext.Provider>
