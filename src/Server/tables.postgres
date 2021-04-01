@@ -2,98 +2,88 @@ CREATE TABLE Users(
     email VARCHAR PRIMARY KEY,
     username VARCHAR (280) UNIQUE not null,
     fun_fact VARCHAR (280) not null
-)
-
-CREATE TABLE l_users(
+) CREATE TABLE l_users(
     _id SERIAL PRIMARY KEY,
     first_name VARCHAR (280) not null,
     last_name VARCHAR (280) not null,
-     password VARCHAR (280) not null,
+    password VARCHAR (280) not null,
     email_fk VARCHAR(280) NOT NULL,
-   FOREIGN KEY (email_fk) 
-    REFERENCES users(email)
-)
-
-CREATE TABLE OAuth(
-  oauth_id varchar PRIMARY KEY, 
-  oauth_type varchar NOT NULL,   
- email_fk VARCHAR (280) NOT NULL,
-  FOREIGN KEY (email_fk) 
-    REFERENCES users(email)
-)
-
---create color table
+    FOREIGN KEY (email_fk) REFERENCES users(email)
+) CREATE TABLE OAuth(
+    oauth_id varchar PRIMARY KEY,
+    oauth_type varchar NOT NULL,
+    email_fk VARCHAR (280) NOT NULL,
+    FOREIGN KEY (email_fk) REFERENCES users(email)
+) --create color table
 CREATE TABLE Colors (
     _id SERIAL PRIMARY KEY,
     palette VARCHAR (280) not null,
-     email_fk varchar NOT NULL,
-     palette_name varchar (255) not null , 
-  FOREIGN KEY (email_fk)
-    REFERENCES users(email)
-)
-
---local users
-INSERT INTO  Users (email, username, fun_fact) VALUES ('k@s.com', 'justspicee', 'i like takis')
-INSERT INTO l_users(_id, first_name, last_name, password, email_fk) VALUES (default, 'Kim', 'Spicer', '234','k@s.com' )
-
-
-
---oauth users 
-INSERT INTO Users (email, username, fun_fact) VALUES ('k@s.com', 'justspicee', 'i like takis')
-INSERT INTO OAuth( oauth_id, oauth_type, email_fk) VALUES (123456, 'google', 'k@s.com')
-
---colors
-INSERT INTO Colors (_id, palette, email_fk) VALUES (default, '[rosa blanca, aquamarine, periwinkle, cerulean, amethyst]', 'k@s.com')
-
-
-
-
--- DROP TABLE IF EXISTS userIp;
--- DROP TABLE IF EXISTS localUsers;
--- DROP TABLE IF EXISTS oauthUsers;
--- DROP TABLE IF EXISTS users;
-
--- CREATE TABLE users(
---     firstname varchar NOT NULL,
---     lastname varchar NOT NULL,
---     email varchar PRIMARY KEY
--- );
-
--- CREATE TABLE localUsers(
---   _id serial PRIMARY KEY,
---   pwd varchar NOT NULL,
---   email_fk varchar NOT NULL,
---   FOREIGN KEY (email_fk) 
---     REFERENCES users(email)
--- );
-
--- CREATE TABLE oauthUsers(
---   oauth_id varchar PRIMARY KEY, 
---   oauth_type varchar NOT NULL,   
---   email_fk varchar NOT NULL,
---   FOREIGN KEY (email_fk) 
---     REFERENCES users(email)
--- );
-
--- CREATE TABLE userIp(
---   _id serial PRIMARY KEY, 
---   userIp varchar UNIQUE, 
---   email_fk varchar NOT NULL,
---   FOREIGN KEY (email_fk)
---     REFERENCES users(email)
--- );
-
-
--- insert into users (firstName, lastName, email) values ('Daniel', 'Balistocky','thestinx@gmail.com');
--- insert into oauthUsers (oauth_id,oauth_type, email_fk) values ('108936834947616854132', 'google','thestinx@gmail.com');
-
--- insert into users (firstName, lastName, email) values ('user1', 'user1','user1@user1');
--- insert into localUsers (_id, pwd, email_fk) values (DEFAULT, 'user1', 'user1@user1');
-
--- select * from users inner join localUsers on email_fk = email;
--- select * from users inner join oauthUsers on email_fk = email;
-
-
-
-
-
+    email_fk varchar NOT NULL,
+    palette_name varchar (255) not null,
+    FOREIGN KEY (email_fk) REFERENCES users(email)
+) --local users
+INSERT INTO Users (email, username, fun_fact)
+VALUES ('k@s.com', 'justspicee', 'i like takis')
+INSERT INTO l_users(_id, first_name, last_name, password, email_fk)
+VALUES (default, 'Kim', 'Spicer', '234', 'k@s.com') --oauth users 
+INSERT INTO Users (email, username, fun_fact)
+VALUES ('k@s.com', 'justspicee', 'i like takis')
+INSERT INTO OAuth(oauth_id, oauth_type, email_fk)
+VALUES (123456, 'google', 'k@s.com') --colors
+INSERT INTO Colors (_id, palette, email_fk)
+VALUES (
+        default,
+        '[rosa blanca, aquamarine, periwinkle, cerulean, amethyst]',
+        'k@s.com'
+    ) -- DROP TABLE IF EXISTS userIp;
+    -- DROP TABLE IF EXISTS localUsers;
+    -- DROP TABLE IF EXISTS oauthUsers;
+    -- DROP TABLE IF EXISTS users;
+    -- CREATE TABLE users(
+    --     firstname varchar NOT NULL,
+    --     lastname varchar NOT NULL,
+    --     email varchar PRIMARY KEY
+    -- );
+    -- CREATE TABLE localUsers(
+    --   _id serial PRIMARY KEY,
+    --   pwd varchar NOT NULL,
+    --   email_fk varchar NOT NULL,
+    --   FOREIGN KEY (email_fk) 
+    --     REFERENCES users(email)
+    -- );
+    -- CREATE TABLE oauthUsers(
+    --   oauth_id varchar PRIMARY KEY, 
+    --   oauth_type varchar NOT NULL,   
+    --   email_fk varchar NOT NULL,
+    --   FOREIGN KEY (email_fk) 
+    --     REFERENCES users(email)
+    -- );
+    -- CREATE TABLE userIp(
+    --   _id serial PRIMARY KEY, 
+    --   userIp varchar UNIQUE, 
+    --   email_fk varchar NOT NULL,
+    --   FOREIGN KEY (email_fk)
+    --     REFERENCES users(email)
+    -- );
+    -- insert into users (firstName, lastName, email) values ('Daniel', 'Balistocky','thestinx@gmail.com');
+    -- insert into oauthUsers (oauth_id,oauth_type, email_fk) values ('108936834947616854132', 'google','thestinx@gmail.com');
+    -- insert into users (firstName, lastName, email) values ('user1', 'user1','user1@user1');
+    -- insert into localUsers (_id, pwd, email_fk) values (DEFAULT, 'user1', 'user1@user1');
+    -- select * from users inner join localUsers on email_fk = email;
+    -- select * from users inner join oauthUsers on email_fk = email;
+    -- `SELECT *  FROM Users
+    --     LEFT OUTER JOIN l_users ON Users.email = l_users.email_fk
+    --     LEFT OUTER JOIN Colors ON Users.email = Colors.email_fk
+    --        WHERE Users.email = 'a@f.com'`
+    --     `SELECT *
+    -- FROM Users
+    --     LEFT OUTER JOIN l_users (Users.email = l_users.email_fk)
+    --     LEFT OUTER JOIN Colors ON (Users.email = Colors.email_fk);` `SELECT *  FROM Users
+    --     LEFT OUTER JOIN l_users ON Users.email = l_users.email_fk
+    --     LEFT OUTER JOIN Colors ON Users.email = Colors.email_fk` `
+    -- SELECT  Users.*, l_users.*
+    -- FROM    Users
+    -- LEFT JOIN 
+    --        character_settings
+    -- ON     character_settings.setting_id = settings.id
+    --         AND character_settings.character_id = 1`
