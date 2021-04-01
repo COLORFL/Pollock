@@ -5,7 +5,7 @@ import { StateContext } from "../provider/StateProvider";
 
 const ColorPaletteTwo = () => {
   const { cookieMonster, setCookieMonster }: any = useContext(StateContext);
-  const { collection, setCollection }: any = useContext(StateContext);
+  const { collection, setCollection, collectionHandler }: any = useContext(StateContext);
   // const [collection, setCollection]= useState([]);
 
   useEffect(() => {
@@ -17,17 +17,20 @@ const ColorPaletteTwo = () => {
       headers: {'Content-Type': 'application/json'},
       body: requestBody
     })
-      .then(res => res.json())
-      .then(res => {
-        console.log('Query res: ', res);
-        setCollection(res)
-      })
-      .catch(err => {
-        console.log('Error: ', err);
-      })
+    .then(res => res.json())
+    .then(res => {
+      console.log('Query res: ', res);
+      // setCollection(() => {
+      //   collection.join(res)
+      // })
+      collectionHandler(res);
+    })
+    .catch(err => {
+      console.log('Error: ', err);
+    })
   }, [])
 
-  console.log('Collection Type: ', Array.isArray(collection))
+  console.log('Collection Type: ', collection)
 
   const paletteElems = collection.map((ele) => {
     return (

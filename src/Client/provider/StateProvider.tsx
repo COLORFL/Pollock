@@ -22,6 +22,12 @@ const StateProvider = ({children}: any) => {
 
     const [collection, setCollection] = useState([]);
 
+    const collectionHandler = (newCollection: any) => {
+        setCollection([...newCollection]);
+        console.log('Updated Collection After Delete: ',newCollection);
+      };
+    
+
     return (
         <StateContext.Provider 
             value={{ 
@@ -34,7 +40,8 @@ const StateProvider = ({children}: any) => {
                 cookieMonster,
                 setCookieMonster,
                 collection,
-                setCollection
+                setCollection,
+                collectionHandler
             }}>
             { children }
         </StateContext.Provider>
