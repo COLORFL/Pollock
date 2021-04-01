@@ -12,7 +12,7 @@ router.post('/', paletteController.createPalette, (req,res)=>{
     res.status(200).json(res.locals.createPalette)
 })
 
-router.delete('/', paletteController.deletePalette, (req,res)=>{
+router.delete('/delete/:paletteName', paletteController.deletePalette, (req,res)=>{
     res.status(200).json(res.locals.deletePalette)
 })
 
