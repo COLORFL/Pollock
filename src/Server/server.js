@@ -9,8 +9,8 @@ const paletteRouter = require('./routes/paletteRouter.js');
 // const cors = require('cors');
 const bodyParser = require('body-parser');
 // const passport = require('passport');
-const cookieSession = require('cookie-session');
-require('./passport-setup');
+// const cookieSession = require('cookie-session');
+// require('./passport-setup');
 // app.use(cors());
 
 // parse application/x-www-form-urlencoded

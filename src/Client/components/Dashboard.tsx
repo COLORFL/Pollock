@@ -3,7 +3,7 @@ import { StateContext } from "../provider/StateProvider";
 
 const Dashboard = () => {
   return (
-    <div className='dashboard'>
+    <div id='dashboard'>
       {/* <h1>Dashboard</h1> */}
       <img src="../Client/assts/pollock2.png" alt=""/>
     </div>
