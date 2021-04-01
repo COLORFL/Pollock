@@ -3,7 +3,10 @@ import { StateContext } from "../provider/StateProvider";
 
 
 const UserInfo = () => {
- 
+  // useEffect(() => {
+  //   fetch('/')
+  // }, []);
+
   return (
     <div id="profile">
       <form>

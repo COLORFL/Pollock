@@ -46,15 +46,18 @@ class ColorPalette extends Component {
         <EachPalette
           key={ele._id}
           paletteName={ele.palette_name}
-          palette={ele.palette}
+          palette={JSON.parse(ele.palette)}
           email={ele.email_fk}
         />
       );
     });
 
     return (
-      <div className="allPalettes">
-        {paletteElems}
+      <div className="myPalettes">
+        <h2>My Palettes</h2>
+        <div className="totalPalettes">
+          {paletteElems}
+        </div>
       </div>
     )
   };
