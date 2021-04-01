@@ -12,28 +12,7 @@ const EachPalette = ({_id, paletteName, email_fk, palette}) => {
     setCollection, 
     collectionHandler  
   }: any = useContext(StateContext);
- 
 
-  
-  // const handleDelete = () => {
-  //   fetch(`/palette/delete/${paletteName}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(data => {
-  //     const email = cookieMonster;
-  //     const body = {email};
-  //     const requestBody = JSON.stringify(body);
-  //     fetch(`/palette/getAll`, {
-  //       method: 'POST',
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: requestBody
-  //     })
-  //     .then(res => {
-  //       res.json();
-  //     })
-  //   })
-  // }
-  // axios.delete(`/card/delete/${id}`, { data: { source: id } })
 
   const handleDelete = () => {
     axios.delete(`/palette/delete/${paletteName}`, { data: { source: paletteName } })
