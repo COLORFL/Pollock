@@ -17,6 +17,7 @@ const NavBar = () => {
         <Link to='/ColorPicker' style={{ textDecoration: 'none' }}>
           <li>Palette Creator</li>
         </Link>
+        <li><a href="/logout" style={{ textDecoration: 'none', color:'white' }}>logout</a></li>
       </ul>
     </div>
   );

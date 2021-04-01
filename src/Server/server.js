@@ -34,7 +34,11 @@ app.use(session({
   //A session is uninitialized when it is new but not modified.
   })
 );
-
+app.get('/logout', (req,res)=>{
+  res.clearCookie('email')
+  console.log('in the logout!')
+  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
+})
 app.use('/palette', paletteRouter);
 app.use('/auth', authRouter);
 // app.use('/user', userRouter);
