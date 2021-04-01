@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { StateContext } from "../provider/StateProvider";
 
 
 const EachPalette = ({_id, paletteName, email_fk, palette}) => {
-  const [collection, setCollection] = useState([]);
+  const { collection, setCollection }: any = useContext(StateContext);
 
   const handleDelete = () => {
     fetch(`/palette/delete/${paletteName}`, {
