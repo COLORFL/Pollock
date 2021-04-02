@@ -21,15 +21,12 @@ const StateProvider = ({children}: any) => {
     const [savedPalette, setSavedPalette] = useState({})
 
     const [collection, setCollection] = useState([]);
-<<<<<<< HEAD
 
     const collectionHandler = (newCollection: any) => {
         setCollection([...newCollection]);
         console.log('Updated Collection After Delete: ',newCollection);
       };
     
-=======
->>>>>>> 8826f4f066c9b81421f0c6ffc31d8271a0ee14c5
 
     return (
         <StateContext.Provider 
@@ -43,12 +40,8 @@ const StateProvider = ({children}: any) => {
                 cookieMonster,
                 setCookieMonster,
                 collection,
-<<<<<<< HEAD
                 setCollection,
                 collectionHandler
-=======
-                setCollection
->>>>>>> 8826f4f066c9b81421f0c6ffc31d8271a0ee14c5
             }}>
             { children }
         </StateContext.Provider>
