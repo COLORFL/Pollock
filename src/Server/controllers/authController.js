@@ -1,5 +1,6 @@
 const db = require('../dbModel.js');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
 
 const authController = {};
 
@@ -15,7 +16,8 @@ authController.validateUser = (req, res, next) => {
         console.log('no res', result, err);
         return next(err);
       } else {
-        console.log('user', password);
+        res.locals.info = { email };
+        console.log('user', email, password);
         return next();
       }
     })
@@ -33,42 +35,62 @@ authController.createUser = async (req, res, next) => {
   // const values = [email, email, funFact]
   const queryStr = `insert into Users (email, username, fun_fact) values 
   ($1, $2, $3) RETURNING * ;`;
-  // ` insert into l_users (first_name, last_name, password) values
-  //                           ($1, $2, $3); `;
-  bcrypt
-    .hash(password, 10)
-    .then((hashedPassword) => {
-      // db.query(queryStr, [firstName, lastName, hashedPassword, email, funFact]);
-      console.log('hashed password', hashedPassword)
-      db.query(queryStr, [email, email, funFact])
-      .then(data=>{
-        console.log(data)
+  const str2 = ` insert into l_users (first_name, last_name, password) values ($1, $2, $3); `;
+  bcrypt.hash(password, 10).then((hashedPassword) => {
+    // db.query(queryStr, [firstName, lastName, hashedPassword, email, funFact]);
+    db.query(queryStr, [email, email, funFact])
+      .then((data) => {
+        db.query(str2, [firstName, lastName, hashedPassword])
+          .then((data) => console.log('second query', data.rows))
+          .catch((err) => console.log('error with second query ----', err));
+
+        console.log(data);
         res.locals.info = {
           email,
           firstName,
           lastName,
           funFact,
-          hashed: hashedPassword,
+          hashedPassword,
         };
-        console.log(res.locals.info)
+        console.log(res.locals.info);
         return next();
-    })
-    .catch(err=>{
+      })
+      .catch((err) => {
         next({
-            log:'Error in createUser query: failed to create User',
-            status:400,
-            message:{err: 'Failed to create new user', err}
-        })
-    });
-    })
-    // .catch((error) => {
-    //   console.error('error with create user middle -----', error);
-    //   // res.redirect('/auth/register');
-    // });
+          log: 'Error in createUser query: failed to create User',
+          status: 400,
+          message: { err: 'Failed to create new user', err },
+        });
+      });
+  });
+  // .catch((error) => {
+  //   console.error('error with create user middle -----', error);
+  //   // res.redirect('/auth/register');
+  // });
 };
 //     );
 // };
 
+authController.getInfo = (req, res, next) => {
+  const { email } = res.locals.info;
+  const queryStr = `SELECT *  FROM Users
+  LEFT OUTER JOIN l_users ON Users.email = l_users.email_fk
+  LEFT OUTER JOIN Colors ON Users.email = Colors.email_fk
+     WHERE Users.email = $1`;
+  db.query(queryStr, [email])
+    .then((data) => {
+      console.log('allinfo ----', data.rows);
+      res.locals.all = data.rows;
+      return next();
+    })
+    .catch((err) => {
+      next({
+        log: 'Error in authController.getInfo: failed to get info',
+        status: 400,
+        message: { err: 'Failed to get info in middleware -', err },
+      });
+    });
+};
 
 // .catch( err => {
 //   next({

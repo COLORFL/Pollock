@@ -1,10 +1,18 @@
 /**********************/
 /* OVERALL PAGE STUFF */
 /**********************/
-#main {
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#app {
   display: flex;
   flex-direction: row;
   height: 100vh;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 /******************/
@@ -45,21 +53,36 @@ li:hover {
 /******************/
 /* SAVED PALETTES */
 /******************/
+.title {
+  margin: 2em 0;
+}
+
 .totalPalettes {
   width: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid purple;
+  overflow: auto;
 }
 
 .eachPalette {
-  border: 1px solid red;
   width: 98%;
   margin: 1em 0;
   display: flex;
   flex-direction: column;
+}
+
+.titleAndTrash {
+  display: flex;
+}
+
+.paletteNames {
+  width: 400px;
+}
+
+#spaceFiller {
+  width: 100%;
 }
 
 .colorBoxes {
@@ -69,12 +92,20 @@ li:hover {
 
 .colorBox {
   width: 24%;
-  border: 1px solid black;
+  border: 1px solid rgb(202, 202, 202);
   text-align: center;
   padding: 2em 0;
   font-size: 1.8em;
   color: rgb(243, 243, 243);
   text-shadow: 1px 1px 1px #000;
+}
+
+.faTrash:hover {
+  color: rgb(39, 121, 197);
+}
+
+.faTrash:active {
+  color: rgb(214, 46, 46);
 }
 
 /******************/
@@ -127,6 +158,8 @@ li:hover {
   display: inline-block;
 }
 
+
+
 .btn {
   display: block;
   margin-bottom: 20px;
@@ -146,8 +179,4 @@ li:hover {
   display: inline-block;
 }
 
-/* h1{
-  color: blueviolet;
-  position: relative;
-  align-self: center;
-} */
+

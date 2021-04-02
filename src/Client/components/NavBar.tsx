@@ -8,15 +8,16 @@ const NavBar = () => {
         <Link to='/' style={{ textDecoration: 'none' }}>
           <li >Dashboard</li>
         </Link>
-        <Link to='/UserInfo' style={{ textDecoration: 'none' }}>
-          <li>Profile</li>
+        <Link to='/ColorPicker' style={{ textDecoration: 'none' }}>
+          <li>Palette Creator</li>
         </Link>
         <Link to='/ColorPalette' style={{ textDecoration: 'none' }}>
           <li>My Palettes</li>
         </Link>
-        <Link to='/ColorPicker' style={{ textDecoration: 'none' }}>
-          <li>Palette Creator</li>
+        <Link to='/UserInfo' style={{ textDecoration: 'none' }}>
+          <li>Profile</li>
         </Link>
+        <li><a href="/logout" style={{ textDecoration: 'none', color:'white' }}>logout</a></li>
       </ul>
     </div>
   );

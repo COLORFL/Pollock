@@ -10,17 +10,8 @@ const authRouter = require('./routes/authRouter.js');
 const bodyParser = require('body-parser');
 // const passport = require('passport');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 require('./passport-setup');
-// app.use(cors());
-
-// parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-// app.use(bodyParser.json());
-
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 const PORT = 8000;
 
@@ -33,41 +24,46 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/client', express.static(path.resolve(__dirname, '../Client')));
 // app.use(express.static('style'));
 
+app.use(cookieParser());
+
+// instatiate session
 app.use(session({
   secret: 'squirtleSquad',
   resave:false, //Forces the session to be saved back to the session store
-  saveUninitialized:false, //
+  saveUninitialized:false, //Forces a session that is "uninitialized" to be saved to the store. 
+  //A session is uninitialized when it is new but not modified.
   })
 );
-
+app.get('/logout', (req,res)=>{
+  res.clearCookie('email')
+  console.log('in the logout!')
+  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
+})
 app.use('/palette', paletteRouter);
 app.use('/auth', authRouter);
 // app.use('/user', userRouter);
-
 
 app.get('/newUser', (req, res) => {
   res.setHeader('Content-type', 'text/html');
   res.status(200).sendFile(path.resolve(__dirname, '../client/signup.html'));
 });
 
-
 app.get('/home', (req, res) => {
   res.setHeader('Content-type', 'text/html');
-  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+  // res.cookie('userEmail', 'j@j.com').send('cookie set'); // .cookie('email', 'j@j.com')
 });
-
 
 app.get('/', (req, res) => {
   res.setHeader('Content-type', 'text/html');
   res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
 });
 
-
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 // global error handler
 app.use((err, req, res, next) => {
-  console.log("Global error", err);
+  console.log('Global error', err);
   res.status(500).json(err);
 });
 

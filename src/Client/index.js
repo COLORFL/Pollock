@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import App from "./App.jsx";
+import App from "./App.tsx";
 import StateProvider from './provider/StateProvider';
 
 render(

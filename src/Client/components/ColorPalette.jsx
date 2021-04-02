@@ -1,7 +1,4 @@
-import { ContactlessOutlined } from "@material-ui/icons";
 import React, { Component, useContext, useEffect, useState} from "react";
-import {StateContext} from "../provider/StateProvider";
-
 import EachPalette from './EachPalette';
 
 class ColorPalette extends Component {
@@ -11,10 +8,6 @@ class ColorPalette extends Component {
       collection: []
     };
   };
-
-  // { greenShade: ['#0E6251', '#148F77', '#45B39D', '#5DADE2', '#21618C'] },
-  // { blueShade: ['#1A5276', '#5499C7', '#A9CCE3', '#BB8FCE', '#E8DAEF'] },
-  // { rainbow: ['#909497', '#BDC3C7', '#F2F3F4', '#85929E', '#ABB2B9'] }
 
   componentDidMount() {
     // dummy hardcoded data
@@ -54,7 +47,9 @@ class ColorPalette extends Component {
 
     return (
       <div className="myPalettes">
-        <h2>My Palettes</h2>
+        <div className="title">
+          <h1>My Palettes</h1>
+        </div>
         <div className="totalPalettes">
           {paletteElems}
         </div>
