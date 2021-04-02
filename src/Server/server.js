@@ -12,16 +12,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 require('./passport-setup');
-// app.use(cors());
-
-// parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-// app.use(bodyParser.json());
-
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 const PORT = 8000;
 
@@ -44,36 +34,42 @@ app.use(session({
   //A session is uninitialized when it is new but not modified.
   })
 );
-
+app.get('/logout', (req,res)=>{
+  res.clearCookie('email')
+  console.log('in the logout!')
+  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
+})
 app.use('/palette', paletteRouter);
 app.use('/auth', authRouter);
 // app.use('/user', userRouter);
-
 
 app.get('/newUser', (req, res) => {
   res.setHeader('Content-type', 'text/html');
   res.status(200).sendFile(path.resolve(__dirname, '../client/signup.html'));
 });
 
-
+app.get('/homeNew', (req, res) => {
+  // res.setHeader('Content-type', 'text/html');
+  res.redirect('/home')
+  // res.sendFile(path.resolve(__dirname, '../client/index.html'));
+  // res.cookie('userEmail', 'j@j.com').send('cookie set'); //  
+});
 app.get('/home', (req, res) => {
   res.setHeader('Content-type', 'text/html');
-  res.cookie('email', 'j@j.com').sendFile(path.resolve(__dirname, '../client/index.html'));
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
   // res.cookie('userEmail', 'j@j.com').send('cookie set'); //
 });
-
 
 app.get('/', (req, res) => {
   res.setHeader('Content-type', 'text/html');
   res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
 });
 
-
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 // global error handler
 app.use((err, req, res, next) => {
-  console.log("Global error", err);
+  console.log('Global error', err);
   res.status(500).json(err);
 });
 

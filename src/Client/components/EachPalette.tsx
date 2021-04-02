@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { StateContext } from "../provider/StateProvider";
+<<<<<<< HEAD:src/Client/components/EachPalette.tsx
 import axios from 'axios';
 
 
@@ -30,6 +31,20 @@ const EachPalette = ({_id, paletteName, email_fk, palette}) => {
       .catch((err) => {
         console.log("err (AXIOS DELETE): ", err);
       })
+=======
+
+
+const EachPalette = ({_id, paletteName, email_fk, palette}) => {
+  const { collection, setCollection }: any = useContext(StateContext);
+
+  const handleDelete = () => {
+    fetch(`/palette/delete/${paletteName}`, {
+      method: 'DELETE'
+    })
+    .then(res => {
+      setCollection(res)
+    })
+>>>>>>> 8826f4f066c9b81421f0c6ffc31d8271a0ee14c5:src/Client/components/EachPalette.jsx
   }
 
 
