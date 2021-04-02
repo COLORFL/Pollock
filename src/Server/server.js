@@ -50,8 +50,8 @@ app.get('/newUser', (req, res) => {
 
 app.get('/home', (req, res) => {
   res.setHeader('Content-type', 'text/html');
-  res.cookie('email', 'j@j.com').sendFile(path.resolve(__dirname, '../client/index.html'));
-  // res.cookie('userEmail', 'j@j.com').send('cookie set'); //
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+  // res.cookie('userEmail', 'j@j.com').send('cookie set'); // .cookie('email', 'j@j.com')
 });
 
 app.get('/', (req, res) => {
