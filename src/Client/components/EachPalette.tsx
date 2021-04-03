@@ -12,7 +12,7 @@ const EachPalette = ({_id, paletteName, email_fk, palette}) => {
     setCollection, 
     collectionHandler  
   }: any = useContext(StateContext);
-
+ 
 
   const handleDelete = () => {
     axios.delete(`/palette/delete/${paletteName}`, { data: { source: paletteName } })

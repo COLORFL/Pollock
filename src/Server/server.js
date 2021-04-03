@@ -14,7 +14,7 @@ const cookieParser = require('cookie-parser');
 require('./passport-setup');
 
 const PORT = 8000;
-
+app.set('view-engine','ejs')
 // parse application/json
 app.use(express.json());
 // parse application/x-www-form-urlencoded
@@ -37,7 +37,7 @@ app.use(session({
 app.get('/logout', (req,res)=>{
   res.clearCookie('email')
   console.log('in the logout!')
-  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
+  res.render('signin.ejs');
 })
 app.use('/palette', paletteRouter);
 app.use('/auth', authRouter);
@@ -48,21 +48,16 @@ app.get('/newUser', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../client/signup.html'));
 });
 
-app.get('/homeNew', (req, res) => {
-  // res.setHeader('Content-type', 'text/html');
-  res.redirect('/home')
-  // res.sendFile(path.resolve(__dirname, '../client/index.html'));
-  // res.cookie('userEmail', 'j@j.com').send('cookie set'); //  
-});
 app.get('/home', (req, res) => {
   res.setHeader('Content-type', 'text/html');
   res.sendFile(path.resolve(__dirname, '../client/index.html'));
-  // res.cookie('userEmail', 'j@j.com').send('cookie set'); //
+  // res.cookie('userEmail', 'j@j.com').send('cookie set'); // .cookie('email', 'j@j.com')
 });
 
 app.get('/', (req, res) => {
-  res.setHeader('Content-type', 'text/html');
-  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
+  // res.setHeader('Content-type', 'text/html');
+  // res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
+  res.render('signin.ejs')
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
@@ -74,3 +69,8 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
+
+
+
+
+

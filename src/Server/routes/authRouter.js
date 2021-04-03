@@ -21,7 +21,7 @@ router.use(
   (req, res) => {
     res.cookie('email', res.locals.info.email)
     console.log('cookie stuff backend----')
-    res.redirect('/homeNew')
+    res.redirect('/home')
     // res.send('im here!!!')
    
   }
