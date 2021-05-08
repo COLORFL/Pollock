@@ -1,7 +1,7 @@
 # Pollock
 
 <div align="center">
-  <img src="./src/client/assts/pollock1.png" width="700px" marginTop="45px" />
+  <img src="./src/client/assts/pollock2.png" width="700px" marginTop="45px" />
 </div>
 
 ## Description
