@@ -69,11 +69,11 @@ const ColorPicker = () => {
                 console.log('active color is:', activeColor )}}
             />
             <div className='colorButton'>
-                <button  style={{backgroundColor: Color1}} onClick={()=>{setColor1(activeColor);console.log('Color1 is:',Color1 )}}>save color 1</button> 
-                <button  style={{backgroundColor: Color2}} onClick={()=>{setColor2(activeColor);console.log('Color2 is:',Color2 )}}>save color 2</button>  
-                <button  style={{backgroundColor: Color3}} onClick={()=>{setColor3(activeColor);console.log('Color3 is:',Color3 )}}>save color 3</button>  
-                <button  style={{backgroundColor: Color4}} onClick={()=>{setColor4(activeColor);console.log('Color4 is:',Color4 )}}>save color 4</button>  
-                <button  style={{backgroundColor: Color5}} onClick={()=>{setColor5(activeColor);console.log('Color5 is:',Color5 )}}>save color 5</button>         
+                <button style={{backgroundColor: Color1}} onClick={()=>{setColor1(activeColor);console.log('Color1 is:',Color1 )}}>save color 1</button> 
+                <button style={{backgroundColor: Color2}} onClick={()=>{setColor2(activeColor);console.log('Color2 is:',Color2 )}}>save color 2</button>  
+                <button style={{backgroundColor: Color3}} onClick={()=>{setColor3(activeColor);console.log('Color3 is:',Color3 )}}>save color 3</button>  
+                <button style={{backgroundColor: Color4}} onClick={()=>{setColor4(activeColor);console.log('Color4 is:',Color4 )}}>save color 4</button>  
+                <button style={{backgroundColor: Color5}} onClick={()=>{setColor5(activeColor);console.log('Color5 is:',Color5 )}}>save color 5</button>         
             </div>
             <div id='paletteName'>
                 <input type="text" key={formKey} placeholder='Palette Name' onChange={(e) => setPaletteName(e.target.value)}/>
