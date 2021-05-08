@@ -1,8 +1,8 @@
 # Pollock
 
-<div align="center">
-  <img src="./src/client/assts/pollock2.png" width="700px" marginTop="45px" />
-</div>
+<p align="center">
+  <img src="./src/client/assets/pollock2.png" width="700px" marginTop="45px" />
+</p>
 
 ## Description
 
