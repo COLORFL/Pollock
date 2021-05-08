@@ -37,7 +37,7 @@ app.use(session({
 app.get('/logout', (req,res)=>{
   res.clearCookie('email')
   console.log('in the logout!')
-  res.render('signin.ejs');
+  res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html'));
 })
 app.use('/palette', paletteRouter);
 app.use('/auth', authRouter);
@@ -69,8 +69,3 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
-
-
-
-
-

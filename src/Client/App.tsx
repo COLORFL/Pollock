@@ -1,10 +1,9 @@
-import React from "react";
+import React,  {useState, useContext} from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './style.css';
 import NavBar from "./components/NavBar";
 import Dashboard from "./components/Dashboard";
 import UserInfo from "./components/UserInfo";
-import ColorPalette from "./components/ColorPalette";
 import ColorPaletteTwo from "./components/ColorPaletteTwo";
 import ColorPicker from "./components/ColorPicker";
 
@@ -12,7 +11,7 @@ import ColorPicker from "./components/ColorPicker";
 const App = () => {
 	return (	
 		<Router>
-			<div id="main">
+			<div id="app">
 				<NavBar />
 				<Switch>
 					<Route exact path="/" component={Dashboard} />
